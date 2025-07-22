@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+{% set icon_class = "bi-house-fill" %}
+{% set header_title = "Home" %}
+{% include "header.html" %}
+
+<div class="main-content">
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold text-body-emphasis">PanKatofel Dev</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Junior developer focused on Python and Flask, with experience in building responsive web interfaces using Bootstrap. I've also explored C# and Unity, gaining a solid foundation in game development. I'm passionate about clean code, learning new technologies, and turning ideas into working applications.
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                <a type="button" class="btn btn-lg px-4 me-sm-3 btn-indigo" href="{{ url_for('portfolio') }}">Check Portfolio</a>
+                <a type="button" class="btn btn-lg px-4 btn-outline-indigo" href="#">Contact</a>
+            </div>
+        </div>
+            <div class="container px-5">
+                <img src="{{ url_for('static', filename='assets/img/enderman.jpg') }}" class="img-fluid border rounded-5 mb-4 w-1 h-auto" alt="Photo of an enderman" loading="lazy" width="200">
+            </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+</body>
+</html>

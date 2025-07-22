@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+</body>
+
+{% set icon_class = "bi-p-circle-fill" %}
+{% set header_title = "Portfolio" %}
+{% include "header.html" %}
+
+<div class="main-content">
+    <section class="py-4 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto"><h1>Portfolio Album</h1>
+                <p class="lead text-body-secondary">A small collection of some of my projects and achievements in the field of IT over the past two years of learning.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-4">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename='assets/img/bootstrap.jpg') }}" class="card-img-top" alt="Bootstrap background" height="225" style="object-fit: cover;">
+                        <div class="card-body d-flex flex-column"><p class="card-text">I haven't worked much with Bootstrap. Nevertheless, I have the basic skills to create the portfolio website you are currently visiting.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('review', project_name='bs_portfolio') }}" type="button" class="btn btn-sm btn-indigo">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename='assets/img/unity.jpg') }}" class="card-img-top" alt="Unity background" height="225" style="object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text">One of my favorite projects created in Unity where I recreated a game from my childhood in it.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('review', project_name='fruit_ninja') }}" type="button" class="btn btn-sm btn-indigo">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename='assets/img/python.jpg') }}" class="card-img-top" alt="Bootstrap background" height="225" style="object-fit: cover;">
+                        <div class="card-body d-flex flex-column"><p class="card-text">I have been working with Python for quite some time, and this is one of my simpler projects. Also, I will roughly describe my skills in this language.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <div class="btn-group">
+                                    <a href="{{ url_for('review', project_name='morse_code') }}" type="button" class="btn btn-sm btn-indigo">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+
+</html>
