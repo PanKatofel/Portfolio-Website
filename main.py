@@ -10,7 +10,7 @@ data = {
         "description": "A personal portfolio website built with Flask and Bootstrap, using Python.",
         "img_url_1": "assets/ptf_img/portfolio1.png",
         "img_url_2": "assets/ptf_img/portfolio2.png",
-        "github_link": "#"},
+        "github_link": "https://github.com/PanKatofel/Portfolio-Website/tree/main"},
 
     'morse_code': {
         "title": "Morse Code Converter",
@@ -24,7 +24,7 @@ data = {
         "description": "A copy of the game from my childhood, recreated using one of the best game engines in the world with C#",
         "img_url_1": "assets/ptf_img/fruit_ninja1.png",
         "img_url_2": "assets/ptf_img/fruit_ninja2.png",
-        "github_link": "#"},
+        "github_link": "https://github.com/PanKatofel/Fruit-Ninja-Lite/tree/main"},
 }
 
 
