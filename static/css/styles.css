@@ -61,3 +61,7 @@ body {
 img.rounded{
     border-radius: 2px;
 }
+
+.form-label{
+    font-weight: bold;
+}

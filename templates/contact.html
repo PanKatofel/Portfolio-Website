@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% from "bootstrap5/form.html" import render_form %}
+
+<body>
+    {% set icon_class = "bi-house-fill" %}
+    {% set header_title = "Contact" %}
+    {% include "header.html" %}
+
+    <div class="main-content">
+        <div class="container" style="padding-top: 30px;">
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='content') }}
+            {{ render_form(form) }}
+
+            <div class="pt-5">
+                {% if message %}
+                  <div class="alert-success">
+                    <h6 style="color: green">{{ message }}</h6>
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include "footer.html" %}
+</body>
+
+</html>

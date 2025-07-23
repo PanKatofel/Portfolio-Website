@@ -1,7 +1,24 @@
-from flask import Flask, render_template
+import smtplib
+from bs4 import BeautifulSoup
+from email.message import EmailMessage
+from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
+from flask_ckeditor import CKEditor
+from forms import ContactForm
+from env import load_env
+import os
+
+
+# -------------------------------------------------------------------
+load_env()
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ["FLASK_KEY"]
+app.config["CKEDITOR_CONFIG"] = {"versionCheck": False}
+app.config["CKEDITOR_PKG_TYPE"] = 'standart'
+app.config["CKEDITOR_SERVE_LOCAL"] = True
+
+ckeditor = CKEditor(app)
 bootstrap = Bootstrap5(app)
 
 data = {
@@ -27,18 +44,54 @@ data = {
         "github_link": "https://github.com/PanKatofel/Fruit-Ninja-Lite/tree/main"},
 }
 
+# --------------------------------------------------------------------
+
 
 @app.route("/")
 def home():
     return render_template("home.html")
 
+
 @app.route("/portfolio")
 def portfolio():
     return render_template("portfolio.html")
+
 
 @app.route("/portfolio/<string:project_name>")
 def review(project_name):
     return render_template("review.html", data=data[project_name])
 
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    form = ContactForm()
+    message = request.args.get('message')
+
+    if form.validate_on_submit():
+        my_email = os.environ["EMAIL"]
+        contact_email = form.email.data
+        content = form.content.data
+
+        soup = BeautifulSoup(content, "html.parser")
+        content = soup.get_text()
+
+        email_message = EmailMessage()
+        email_message['Subject'] = "Portfolio Contact"
+        email_message['From'] = my_email
+        email_message['To'] = my_email
+        email_message.set_content(f"Contact: {contact_email}\n\n"
+                                  f"{content}", charset='utf-8')
+
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=my_email, password=os.environ["PASSWORD"])
+            connection.send_message(email_message)
+
+        return redirect(url_for('contact', message="The message was sent successfully."))
+
+    return render_template("contact.html", form=form, message=message)
+
+
+# --------------------------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
