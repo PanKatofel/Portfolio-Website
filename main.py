@@ -5,13 +5,10 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from forms import ContactForm
-from env import load_env
 import os
 
 
 # -------------------------------------------------------------------
-load_env()
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ["FLASK_KEY"]
 app.config["CKEDITOR_CONFIG"] = {"versionCheck": False}
