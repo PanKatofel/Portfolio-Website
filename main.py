@@ -1,10 +1,10 @@
-import smtplib
 from bs4 import BeautifulSoup
-from email.message import EmailMessage
 from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from forms import ContactForm
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 import os
 
 
@@ -72,17 +72,11 @@ def contact():
         soup = BeautifulSoup(content, "html.parser")
         content = soup.get_text()
 
-        email_message = EmailMessage()
-        email_message['Subject'] = "Portfolio Contact"
-        email_message['From'] = my_email
-        email_message['To'] = my_email
-        email_message.set_content(f"Contact: {contact_email}\n\n"
-                                  f"{content}", charset='utf-8')
-
-        with smtplib.SMTP("smtp.gmail.com") as connection:
-            connection.starttls()
-            connection.login(user=my_email, password=os.environ["PASSWORD"])
-            connection.send_message(email_message)
+        sg = SendGridAPIClient(os.environ["SENDGRID_KEY"])
+        email = Mail(from_email=my_email, to_emails=my_email,
+                     subject="Portfolio Contact",
+                     plain_text_content=f"Contact {contact_email}\n\n{content}")
+        sg.send(email)
 
         return redirect(url_for('contact', message="The message was sent successfully."))
 

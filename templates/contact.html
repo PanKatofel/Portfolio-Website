@@ -20,6 +20,11 @@
                     <h6 style="color: green">{{ message }}</h6>
                   </div>
                 {% endif %}
+                {% if error_message %}
+                  <div class="alert-success">
+                    <h6 style="color: red">{{ message }}</h6>
+                  </div>
+                {% endif %}
             </div>
         </div>
     </div>
