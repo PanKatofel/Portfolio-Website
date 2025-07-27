@@ -3,10 +3,10 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from forms import ContactForm
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+# from sendgrid import SendGridAPIClient
+# from sendgrid.helpers.mail import Mail
+import smtplib
 import os
-
 
 # -------------------------------------------------------------------
 app = Flask(__name__)
@@ -72,11 +72,17 @@ def contact():
         soup = BeautifulSoup(content, "html.parser")
         content = soup.get_text()
 
-        sg = SendGridAPIClient(os.environ["SENDGRID_KEY"])
-        email = Mail(from_email=my_email, to_emails=my_email,
-                     subject="Portfolio Contact",
-                     plain_text_content=f"Contact {contact_email}\n\n{content}")
-        sg.send(email)
+        # sg = SendGridAPIClient(os.environ["SENDGRID_KEY"])
+        # email = Mail(from_email=my_email, to_emails=my_email,
+        #              subject="Portfolio Contact",
+        #              plain_text_content=f"Contact {contact_email}\n\n{content}")
+        # sg.send(email)
+
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as connection:
+            connection.login(user=my_email, password=os.environ["PASSWORD"])
+            connection.sendmail(from_addr=my_email, to_addrs=my_email,
+                                    msg=f"Subject:Portfolio Contact\n\n"
+                                        f"Contact: {contact_email}\n{content}")
 
         return redirect(url_for('contact', message="The message was sent successfully."))
 
