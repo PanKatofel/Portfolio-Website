@@ -5,11 +5,11 @@ from flask_ckeditor import CKEditor
 from forms import ContactForm
 # from sendgrid import SendGridAPIClient
 # from sendgrid.helpers.mail import Mail
-from env import load_env
+# from env import load_env
 import smtplib
 import os
 
-load_env()
+# load_env()
 # -------------------------------------------------------------------
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ["FLASK_KEY"]
