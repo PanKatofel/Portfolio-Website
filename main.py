@@ -3,8 +3,6 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from forms import ContactForm
-# from sendgrid import SendGridAPIClient
-# from sendgrid.helpers.mail import Mail
 # from env import load_env
 import smtplib
 import os
@@ -21,26 +19,45 @@ ckeditor = CKEditor(app)
 bootstrap = Bootstrap5(app)
 
 data = {
-    'bs_portfolio': {
-        "title": "Web Portfolio",
-        "description": "A personal portfolio website built with Flask and Bootstrap, using Python.",
-        "img_url_1": "assets/ptf_img/portfolio1.png",
-        "img_url_2": "assets/ptf_img/portfolio2.png",
-        "github_link": "https://github.com/PanKatofel/Portfolio-Website/tree/main"},
-
     'morse_code': {
         "title": "Morse Code Converter",
         "description": "A simple program for translating text to and from Morse code, showcasing a small portion of my Python abilities.",
         "img_url_1": "assets/ptf_img/morse1.png",
         "img_url_2": "assets/ptf_img/morse2.png",
-        "github_link": "https://github.com/PanKatofel/Text-To-Morse-Code"},
+        "github_link": "https://github.com/PanKatofel/Text-To-Morse-Code",
+        "icon_img": "assets/img/morse.jpg",
+        "album_desc": "A simple Python project that converts text into Morse code and vice versa, showcasing basic string manipulation and dictionary-based encoding."
+    },
+
+    'bs_portfolio': {
+        "title": "Web Portfolio",
+        "description": "A personal portfolio website built with Flask and Bootstrap, using Python.",
+        "img_url_1": "assets/ptf_img/portfolio1.png",
+        "img_url_2": "assets/ptf_img/portfolio2.png",
+        "github_link": "https://github.com/PanKatofel/Portfolio-Website/tree/main",
+        "icon_img": "assets/img/www.jpg",
+        "album_desc": "This personal portfolio website was built with Flask and Bootstrap to showcase my projects and skills in web development and Python."
+    },
 
     'fruit_ninja': {
         "title": "Unity - Fruit Ninja Lite",
         "description": "A copy of the game from my childhood, recreated using one of the best game engines in the world with C#",
         "img_url_1": "assets/ptf_img/fruit_ninja1.png",
         "img_url_2": "assets/ptf_img/fruit_ninja2.png",
-        "github_link": "https://github.com/PanKatofel/Fruit-Ninja-Lite/tree/main"},
+        "github_link": "https://github.com/PanKatofel/Fruit-Ninja-Lite/tree/main",
+        "icon_img": "assets/img/ninja.jpg",
+        "album_desc": "This simple game is a remake of the classic Fruit Ninja, built using the Unity engine and C#. It was created to practice game development fundamentals."
+        },
+
+    'tic_tac_toe': {
+        "title": "Tic Tac Toe",
+        "description": "Game of TicTacToe made in python that allows two players to compete using simple command-line inputs.",
+        "img_url_1": "assets/ptf_img/tictactoe1.png",
+        "img_url_2": "assets/ptf_img/tictactoe2.png",
+        "github_link": "https://github.com/PanKatofel/TicTacToe",
+        "icon_img": "assets/img/tictactoe.jpg",
+        "album_desc": "A classic Tic Tac Toe game built in Python to be played directly in the terminal, featuring two-player gameplay with a clean text-based interface."
+    },
 }
 
 # --------------------------------------------------------------------
@@ -53,7 +70,7 @@ def home():
 
 @app.route("/portfolio")
 def portfolio():
-    return render_template("portfolio.html")
+    return render_template("portfolio.html", data=data)
 
 
 @app.route("/portfolio/<string:project_name>")
@@ -73,12 +90,6 @@ def contact():
 
         soup = BeautifulSoup(content, "html.parser")
         content = soup.get_text()
-
-        # sg = SendGridAPIClient(os.environ["SENDGRID_KEY"])
-        # email = Mail(from_email=my_email, to_emails=my_email,
-        #              subject="Portfolio Contact",
-        #              plain_text_content=f"Contact {contact_email}\n\n{content}")
-        # sg.send(email)
 
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as connection:
             connection.login(user=my_email, password=os.environ["PASSWORD"])
