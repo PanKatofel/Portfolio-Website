@@ -9,7 +9,7 @@
     {% include "header.html" %}
 
     <div class="main-content">
-        <div class="container" style="padding-top: 30px;">
+        <div class="container" style="padding-top: 10px;">
             {{ ckeditor.load() }}
             {{ ckeditor.config(name='content') }}
             {{ render_form(form) }}

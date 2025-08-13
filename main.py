@@ -26,7 +26,7 @@ data = {
         "img_url_2": "assets/ptf_img/morse2.png",
         "github_link": "https://github.com/PanKatofel/Text-To-Morse-Code",
         "icon_img": "assets/img/morse.jpg",
-        "album_desc": "A simple Python project that converts text into Morse code and vice versa, showcasing basic string manipulation and dictionary-based encoding."
+        "album_desc": "A simple Python project that converts text to Morse code and vice versa."
     },
 
     'bs_portfolio': {
@@ -36,17 +36,17 @@ data = {
         "img_url_2": "assets/ptf_img/portfolio2.png",
         "github_link": "https://github.com/PanKatofel/Portfolio-Website/tree/main",
         "icon_img": "assets/img/www.jpg",
-        "album_desc": "This personal portfolio website was built with Flask and Bootstrap to showcase my projects and skills in web development and Python."
+        "album_desc": "A combination of Flask and Bootstrap used to create my web portfolio."
     },
 
     'fruit_ninja': {
-        "title": "Unity - Fruit Ninja Lite",
+        "title": "Fruit Ninja Lite",
         "description": "A copy of the game from my childhood, recreated using one of the best game engines in the world with C#",
         "img_url_1": "assets/ptf_img/fruit_ninja1.png",
         "img_url_2": "assets/ptf_img/fruit_ninja2.png",
         "github_link": "https://github.com/PanKatofel/Fruit-Ninja-Lite/tree/main",
         "icon_img": "assets/img/ninja.jpg",
-        "album_desc": "This simple game is a remake of the classic Fruit Ninja, built using the Unity engine and C#. It was created to practice game development fundamentals."
+        "album_desc": "Recreation of the mobile game Fruit Ninja, made in Unity."
         },
 
     'tic_tac_toe': {
@@ -56,7 +56,17 @@ data = {
         "img_url_2": "assets/ptf_img/tictactoe2.png",
         "github_link": "https://github.com/PanKatofel/TicTacToe",
         "icon_img": "assets/img/tictactoe.jpg",
-        "album_desc": "A classic Tic Tac Toe game built in Python to be played directly in the terminal, featuring two-player gameplay with a clean text-based interface."
+        "album_desc": "A classic Tic-Tac-Toe game for two players to play in the terminal."
+    },
+
+    'watermark': {
+        "title": "Image Watermark",
+        "description": "An application built in Python using the Tkinter library to add watermarks to photos and download the edited images.",
+        "img_url_1": "assets/ptf_img/watermark1.png",
+        "img_url_2": "assets/ptf_img/watermark2.png",
+        "github_link": "https://github.com/PanKatofel/Watermark-Add",
+        "icon_img": "assets/img/watermarked.jpg",
+        "album_desc": "An application that allows you to add a watermark to a photo and download it."
     },
 }
 

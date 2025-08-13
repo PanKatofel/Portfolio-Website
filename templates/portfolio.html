@@ -10,7 +10,7 @@
 {% include "header.html" %}
 
 <div class="main-content">
-    <section class="py-4 text-center container">
+    <section class="py-3 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto"><h1>Portfolio Album</h1>
                 <p class="lead text-body-secondary">A small collection of some of my projects and achievements in the field of IT over the past two years of learning.</p>
@@ -18,14 +18,16 @@
         </div>
     </section>
 
-    <div class="album py-1">
+    <div class="album py-2">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for project in data %}
-                    <div class="col">
-                    <div class="card shadow-sm p-1">
-                        <img src="{{ url_for('static', filename=data[project]['icon_img']) }}" class="card-img-top" alt="Bootstrap background" height="200" style="object-fit: cover;">
-                        <div class="card-body d-flex flex-column"><p class="card-text">{{ data[project]['album_desc'] }}</p>
+                    <div class="col py-2">
+                    <div class="card shadow-sm">
+                        <img src="{{ url_for('static', filename=data[project]['icon_img']) }}" class="card-img-top" height="150" style="object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5>{{ data[project]['title'] }}</h5>
+                            <p class="card-text">{{ data[project]['album_desc'] }}</p>
                             <div class="d-flex justify-content-between align-items-center mt-auto">
                                 <div class="btn-group">
                                     <a href="{{ url_for('review', project_name=project) }}" type="button" class="btn btn-sm btn-indigo">View</a>
