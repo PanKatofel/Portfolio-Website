@@ -3,11 +3,11 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from forms import ContactForm
-# from env import load_env
+from env import load_env
 import smtplib
 import os
 
-# load_env()
+load_env()
 # -------------------------------------------------------------------
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ["FLASK_KEY"]
@@ -67,6 +67,16 @@ data = {
         "github_link": "https://github.com/PanKatofel/Watermark-Add",
         "icon_img": "assets/img/watermarked.jpg",
         "album_desc": "An application that allows you to add a watermark to a photo and download it."
+    },
+
+    'type_test': {
+        "title": "Typing Speed Test",
+        "description": "A Tkinter application built entirely with Python that lets you test your typing speed and then summarizes your results.",
+        "img_url_1": "assets/ptf_img/type_test1.png",
+        "img_url_2": "assets/ptf_img/type_test2.png",
+        "github_link": "https://github.com/PanKatofel/Typing-Speed-Tester",
+        "icon_img": "assets/img/keyboard.jpg",
+        "album_desc": "Assess your typing speed by entering a series of randomly generated words."
     },
 }
 
