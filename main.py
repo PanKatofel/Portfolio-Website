@@ -78,6 +78,16 @@ data = {
         "icon_img": "assets/img/keyboard.jpg",
         "album_desc": "Assess your typing speed by entering a series of randomly generated words."
     },
+
+    'breakout': {
+        "title": "Breakout Game",
+        "description": "A classic Breakout game recreated in Python using the Turtle module. Control the paddle, break bricks, and test your reflexes.",
+        "img_url_1": "assets/ptf_img/breakout1.png",
+        "img_url_2": "assets/ptf_img/breakout2.png",
+        "github_link": "https://github.com/PanKatofel/Breakout-Game",
+        "icon_img": "assets/img/breakout.jpg",
+        "album_desc": "A remake of Breakout game, made in Pycharm"
+    },
 }
 
 # --------------------------------------------------------------------
